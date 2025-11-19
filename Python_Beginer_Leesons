@@ -1,0 +1,99 @@
+Boolean that is for True and false statements
+
+Synthax error that bascially deals with grammer (doesn't have right grammer or Synthax )
+
+IDE - Integrated Develpoment Environment: A code editior with features like autocompletion, debugging 
+editior - Vscode
+
+Built#-in functions
+shift ctrl m
+
+Running python code
+1. Use Python3 plus file name
+you the run button
+
+
+Expression is a piece of code that produces a value
+linter code checks for potential errors mostly in synthax error
+
+variables store data in the computers memory
+example;
+x = 100 so x is the variable storing 100
+
+
+variables must be meaningfful
+lower case to name variables
+underscores to separate multiple names
+space out between equal signs
+
+
+
+1. Comparison Operators
+
+These are used to compare values: =, ==, >, <, etc.
+
+2. Conditional Statements (If Statements)
+
+You can control the flow of your code using if, elif, and else statements based on conditions.
+
+Example: If temperature is greater than 30, it's warm; if less than 20, it's nice; otherwise, it's cold.
+
+3. Ternary Operator
+
+A shorthand for simple if-else statements.
+
+Example: message = "Eligible" if age >= 18 else "Not Eligible"
+
+4. Logical Operators
+
+and, or, and not are used to combine or negate conditions.
+
+Short-circuiting: If a condition fails early (with and), the rest won’t be evaluated.
+
+5. Chaining Comparison Operators
+
+You can chain comparisons like 18 <= age < 65 to check if a value falls within a range.
+
+6. For Loops
+
+Used for repetition, looping over a sequence or range.
+
+Example: for number in range(1, 10, 3) will iterate with steps of 3.
+
+For-Else: If the loop completes without break, the else block will execute.
+
+7. Nested Loops
+
+A loop inside another loop. The inner loop runs completely for each iteration of the outer loop.
+
+8. While Loops
+
+A loop that runs as long as a condition is true. You can also create an infinite loop with while True.
+
+9. Iterable Objects
+
+Lists, ranges, and other sequences are iterable, meaning they can be looped over using for.
+
+10. Functions
+
+Functions help structure code into reusable blocks.
+
+You can pass arguments to functions, and they can either perform tasks or return values.
+
+Example: def greet(name): print(f"Hi {name}")
+
+11. Arguments & Keyword Arguments
+
+Arguments are values passed into functions.
+
+Keyword arguments allow you to specify which parameter is being passed, like by=1.
+
+12. Default Arguments
+
+You can set default values for function parameters, which are used if the caller doesn’t provide a value.
+
+13. Variable-length Arguments (Using *args)
+
+Use *args to allow a function to accept an arbitrary number of arguments.
+
+Example: def multiply(*numbers) lets you pass any number of numbers to multiply together.
