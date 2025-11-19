@@ -1,81 +1,98 @@
-#balance = 50000
-#attempts = 0
-#PIN = '2005'
+PIN = '2005'
+balance = 50000  # global variable to maintain state
 
-def atm_machine():
-    balance = 50000
+def pin_verification():
     attempts = 0
-    PIN = '2005'
-
-    #Balance and pin
-
-    #PIN VERIFICATION
     while attempts < 3:
-        user_pin = input("Enter your pin: ")
+        user_pin = input("Enter your PIN: ")
         if user_pin == PIN:
-            print("Access Granted")
-            break
+            print("Access Granted\n")
+            return True
         else:
             attempts += 1
             print(f"Access Denied. You have {3 - attempts} attempts left\n")
-    else:
-        print("You have tried so many times. Access blocked!")
-        return  # Exit the program if PIN is incorrect
+    print("You have tried too many times. Access blocked!")
+    return False
 
-    #ATM OPTIONS
+def show_menu():
+    print("\n=== ATM MENU ===")
+    print("1. Check Balance")
+    print("2. Withdraw Money")
+    print("3. Deposit Money")
+    print("4. Transfer Money")
+    print("5. Exit")
+
+def check_balance():
+    print(f"Your current balance is: ${balance}")
+
+def withdraw_amount():
+    global balance
+    try:
+        amount = int(input("Enter amount to be withdrawn: "))
+        if amount <= 0:
+            print("Invalid input. Enter a positive number.")
+        elif amount > balance:
+            print("Insufficient balance.")
+        else:
+            balance -= amount
+            print(f"Withdrawal successful. New balance: ${balance}")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+def deposit_money():
+    global balance
+    try:
+        amount = int(input("Enter amount to deposit: "))
+        if amount <= 0:
+            print("Invalid input. Enter a positive number.")
+        else:
+            balance += amount
+            print(f"Deposited ${amount}. New balance: ${balance}")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+def transfer_money():
+    global balance
+    recipient = input("Enter recipient's account number: ")
+    try:
+        amount = int(input("Enter amount to transfer: "))
+        if amount <= 0:
+            print("Invalid input. Enter a positive number.")
+        elif amount > balance:
+            print("Insufficient balance.")
+        else:
+            balance -= amount
+            print(f"Transferred ${amount} to account {recipient}. New balance: ${balance}")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+
+def exit_atm():
+    print("Exiting.....Thank you for using the ATM")
+
+def atm_machine():
+    if not pin_verification():
+        return
+
     while True:
-        print("\n === ATM MENU ===")
-        print("1. Check Balance")
-        print("2.Withdraw Money")
-        print("3.Deposit Money")
-        print("4.Transfer Money")
-        print("5. Exit")
-
-        choice = int(input("Select an option(1-5): "))
-        if choice not in range(1, 6):
-            print("Invalid choice. Please select a valid option")
+        show_menu()
+        try:
+            choice = int(input("Select an option (1-5): "))
+        except ValueError:
+            print("Invalid input. Choose a number from 1-5.")
             continue
 
-        #CHECK BALANCE
         if choice == 1:
-            print(f"Your current balance is: ${balance}")
-
-        #WITHDRAW
+            check_balance()
         elif choice == 2:
-            amount = int(input("Enter amount to be withdrawn: "))
-            balance -= amount
-            print(f"Your current amount is:  ${balance}")
-
-        #DEPOSIT MONEY
+            withdraw_amount()
         elif choice == 3:
-            amount = int(input(f"Enter amount to be deposited:  "))
-            if amount <= 0:
-                print("Invalid input. Please enter a positive number.")
-            else:
-                balance += amount
-                print(f"Deposited ${amount}. New balance is: ${balance}")
-        
-        #Transfer Money
+            deposit_money()
         elif choice == 4:
-            Receipient = input(f"Enter receipient's number: ")
-            try:
-                amount = int(input("Enter amount to transfer: "))
-                if amount > balance:
-                    print("Insufficient Balance. Amount is more than exisiting balance")
-                if amount <= 0:
-                    print("Invalid input. Please enter a positive number.")
-                else:
-                    balance -= amount
-                    print(f"Transferred ${amount} to account {Receipient}. New balance is: ${balance}")
-            except ValueError:
-                    print("Invalid input. Please enter a number.")
-
-
-#EXIT
+            transfer_money()
         elif choice == 5:
-            print("Exiting.....Thank you for using the atm")
+            exit_atm()
             break
+        else:
+            print("Invalid choice. Please select a valid option.")
 
-           
-
-atm_machine()   
+atm_machine()
